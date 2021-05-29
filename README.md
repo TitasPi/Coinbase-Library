@@ -19,14 +19,14 @@ await Coinbase.getRate('ETH', 'EUR');
 await Coinbase.getRate('BTC', 'USD');
 ```
 
-Get wallet balance (currently only supports 'eur' and 'eth' as second argument)
+Get wallet balance
 ```js
-// Returns wallet's crypto and normal currency as object -> { eth: '0.01234567', eur: '12.34' }
+// Returns wallet's crypto and normal currency as object -> { crypto: '0.01234567', normal: '12.34' }
 const balance = await Coinbase.getBalance('walletid', 'both');
 // Returns wallet's normal currency -> 12.34
-const balance = await Coinbase.getBalance('walletid', 'eur');
+const balance = await Coinbase.getBalance('walletid', 'normal');
 // Returns wallet's crypto currency -> 0.01234567
-const balance = await Coinbase.getBalance('walletid', 'eth');
+const balance = await Coinbase.getBalance('walletid', 'crypto');
 ```
 
 ## Example

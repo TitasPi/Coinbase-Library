@@ -14,7 +14,7 @@ class Coinbase {
   /**
    * Returns wallet's balance
    * @param {String} walletID Wallet ID
-   * @param {('both'|'eth'|'eur')} type Type to return [both, eth, eur]
+   * @param {('both'|'crypto'|'normal')} type Type to return [both, crypto, normal]
    * @returns Coinbase wallet balance
    */
   async getBalance(walletID, type) {
@@ -48,16 +48,16 @@ class Coinbase {
       throw 'Wallet not found';
     }
     if(type === 'both') {
-      return { eth: rWallet.balance.amount, eur: rWallet.native_balance.amount };
+      return { crypto: rWallet.balance.amount, normal: rWallet.native_balance.amount };
     }
-    else if(type === 'eth') {
+    else if(type === 'crypto') {
       return rWallet.balance.amount;
     }
-    else if(type === 'eur') {
+    else if(type === 'normal') {
       return rWallet.native_balance.amount;
     }
     else {
-      throw 'Used wrong type in function \'getBalance\'. Valid types: both, eth, eur';
+      throw 'Used wrong type in function \'getBalance\'. Valid types: both, crypto, normal';
     }
 
   }
